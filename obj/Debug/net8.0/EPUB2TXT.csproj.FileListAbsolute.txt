@@ -1,0 +1,15 @@
+/workspaces/EPUB2TXT/bin/Debug/net8.0/EPUB2TXT
+/workspaces/EPUB2TXT/bin/Debug/net8.0/EPUB2TXT.deps.json
+/workspaces/EPUB2TXT/bin/Debug/net8.0/EPUB2TXT.runtimeconfig.json
+/workspaces/EPUB2TXT/bin/Debug/net8.0/EPUB2TXT.dll
+/workspaces/EPUB2TXT/bin/Debug/net8.0/EPUB2TXT.pdb
+/workspaces/EPUB2TXT/obj/Debug/net8.0/EPUB2TXT.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/EPUB2TXT/obj/Debug/net8.0/EPUB2TXT.AssemblyInfoInputs.cache
+/workspaces/EPUB2TXT/obj/Debug/net8.0/EPUB2TXT.AssemblyInfo.cs
+/workspaces/EPUB2TXT/obj/Debug/net8.0/EPUB2TXT.csproj.CoreCompileInputs.cache
+/workspaces/EPUB2TXT/obj/Debug/net8.0/EPUB2TXT.sourcelink.json
+/workspaces/EPUB2TXT/obj/Debug/net8.0/EPUB2TXT.dll
+/workspaces/EPUB2TXT/obj/Debug/net8.0/refint/EPUB2TXT.dll
+/workspaces/EPUB2TXT/obj/Debug/net8.0/EPUB2TXT.pdb
+/workspaces/EPUB2TXT/obj/Debug/net8.0/EPUB2TXT.genruntimeconfig.cache
+/workspaces/EPUB2TXT/obj/Debug/net8.0/ref/EPUB2TXT.dll
