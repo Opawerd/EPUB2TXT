@@ -5,10 +5,10 @@
     <dc:creator opf:role="aut" opf:file-as="Some wonderful personal">Some wonderful personal</dc:creator>
     <dc:publisher>Please do not sue me</dc:publisher>
     <dc:date>2024-01-07T15:00:00+00:00</dc:date>
-    <dc:identifier id="BookId" opf:scheme="UUID">urn:uuid:86111e22-586e-4b8f-b36d-3b54ef1d9560</dc:identifier>
+    <dc:identifier id="BookId" opf:scheme="UUID">null</dc:identifier>
     <dc:contributor opf:role="bkp">calibre (8.0.1) [https://calibre-ebook.com]</dc:contributor>
     <dc:language>ko</dc:language>
-    <dc:identifier opf:scheme="calibre">dd6c2096-df86-4e18-abb2-850dea917758</dc:identifier>
+    <dc:identifier opf:scheme="calibre">null</dc:identifier>
     <meta content="0.9.14" name="Sigil version"/>
     <meta name="cover" content="cover.jpg"/>
     <meta content="1" name="GBSProcVer"/>
