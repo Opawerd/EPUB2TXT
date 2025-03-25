@@ -1,0 +1,82 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<package xmlns="http://www.idpf.org/2007/opf" unique-identifier="BookId" version="2.0">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+    <dc:title>Not illegal at all</dc:title>
+    <dc:creator opf:role="aut" opf:file-as="Some wonderful personal">Some wonderful personal</dc:creator>
+    <dc:publisher>Please do not sue me</dc:publisher>
+    <dc:date>2024-01-07T15:00:00+00:00</dc:date>
+    <dc:identifier id="BookId" opf:scheme="UUID">urn:uuid:86111e22-586e-4b8f-b36d-3b54ef1d9560</dc:identifier>
+    <dc:contributor opf:role="bkp">calibre (8.0.1) [https://calibre-ebook.com]</dc:contributor>
+    <dc:language>ko</dc:language>
+    <dc:identifier opf:scheme="calibre">dd6c2096-df86-4e18-abb2-850dea917758</dc:identifier>
+    <meta content="0.9.14" name="Sigil version"/>
+    <meta name="cover" content="cover.jpg"/>
+    <meta content="1" name="GBSProcVer"/>
+    <meta content="GoogleEbooks" name="GBSEpubSource"/>
+    <meta name="calibre:title_sort" content="Not illegal at all"/>
+  </metadata>
+  <manifest>
+    <item href="Text/cover.xhtml" id="cover.xhtml" media-type="application/xhtml+xml"/>
+    <item href="Text/color.xhtml" id="color.xhtml" media-type="application/xhtml+xml"/>
+    <item href="Text/main_title.xhtml" id="main_title.xhtml" media-type="application/xhtml+xml"/>
+    <item href="Text/index.xhtml" id="index.xhtml" media-type="application/xhtml+xml"/>
+    <item href="Text/character.xhtml" id="character.xhtml" media-type="application/xhtml+xml"/>
+    <item href="Text/chapter_00.xhtml" id="chapter_00.xhtml" media-type="application/xhtml+xml"/>
+    <item href="Text/chapter_01.xhtml" id="chapter_01.xhtml" media-type="application/xhtml+xml"/>
+    <item href="Text/inter_01.xhtml" id="inter_01.xhtml" media-type="application/xhtml+xml"/>
+    <item href="Text/chapter_02.xhtml" id="chapter_02.xhtml" media-type="application/xhtml+xml"/>
+    <item href="Text/chapter_03.xhtml" id="chapter_03.xhtml" media-type="application/xhtml+xml"/>
+    <item href="Text/inter_02.xhtml" id="inter_02.xhtml" media-type="application/xhtml+xml"/>
+    <item href="Text/chapter_04.xhtml" id="chapter_04.xhtml" media-type="application/xhtml+xml"/>
+    <item href="Text/chapter_04-2.xhtml" id="chapter_04-2.xhtml" media-type="application/xhtml+xml"/>
+    <item href="Text/epilogue.xhtml" id="epilogue.xhtml" media-type="application/xhtml+xml"/>
+    <item href="Text/postscript.xhtml" id="postscript.xhtml" media-type="application/xhtml+xml"/>
+    <item href="Text/side.xhtml" id="side.xhtml" media-type="application/xhtml+xml"/>
+    <item href="Text/illustrations.xhtml" id="illustrations.xhtml" media-type="application/xhtml+xml"/>
+    <item href="Text/copyright.xhtml" id="copyright.xhtml" media-type="application/xhtml+xml"/>
+    <item href="toc.ncx" id="ncx" media-type="application/x-dtbncx+xml"/>
+    <item href="Styles/style.css" id="style.css" media-type="text/css"/>
+    <item href="Images/character.jpg" id="character.jpg" media-type="image/jpeg"/>
+    <item href="Images/color_01.jpg" id="color_01.jpg" media-type="image/jpeg"/>
+    <item href="Images/color_02.jpg" id="color_02.jpg" media-type="image/jpeg"/>
+    <item href="Images/color_03.jpg" id="color_03.jpg" media-type="image/jpeg"/>
+    <item href="Images/color_04.jpg" id="color_04.jpg" media-type="image/jpeg"/>
+    <item href="Images/cover.jpg" id="cover.jpg" media-type="image/jpeg"/>
+    <item href="Images/index.jpg" id="index.jpg" media-type="image/jpeg"/>
+    <item href="Images/mono_01.jpg" id="mono_01.jpg" media-type="image/jpeg"/>
+    <item href="Images/mono_02.jpg" id="mono_02.jpg" media-type="image/jpeg"/>
+    <item href="Images/mono_03.jpg" id="mono_03.jpg" media-type="image/jpeg"/>
+    <item href="Images/mono_04.jpg" id="mono_04.jpg" media-type="image/jpeg"/>
+    <item href="Images/mono_05.jpg" id="mono_05.jpg" media-type="image/jpeg"/>
+    <item href="Images/mono_06.jpg" id="mono_06.jpg" media-type="image/jpeg"/>
+    <item href="Images/mono_07.jpg" id="mono_07.jpg" media-type="image/jpeg"/>
+    <item href="Images/mono_08.jpg" id="mono_08.jpg" media-type="image/jpeg"/>
+    <item href="Images/mono_09.jpg" id="mono_09.jpg" media-type="image/jpeg"/>
+    <item href="Images/mono_10.jpg" id="mono_10.jpg" media-type="image/jpeg"/>
+    <item href="Images/mt.jpg" id="mt.jpg" media-type="image/jpeg"/>
+    <item href="_page_map_.xml" id="_page_map_" media-type="application/oebps-page-map+xml"/>
+  </manifest>
+  <spine page-map="_page_map_" toc="ncx">
+    <itemref idref="cover.xhtml"/>
+    <itemref idref="color.xhtml"/>
+    <itemref idref="main_title.xhtml"/>
+    <itemref idref="index.xhtml"/>
+    <itemref idref="character.xhtml"/>
+    <itemref idref="chapter_00.xhtml"/>
+    <itemref idref="chapter_01.xhtml"/>
+    <itemref idref="inter_01.xhtml"/>
+    <itemref idref="chapter_02.xhtml"/>
+    <itemref idref="chapter_03.xhtml"/>
+    <itemref idref="inter_02.xhtml"/>
+    <itemref idref="chapter_04.xhtml"/>
+    <itemref idref="chapter_04-2.xhtml"/>
+    <itemref idref="epilogue.xhtml"/>
+    <itemref idref="postscript.xhtml"/>
+    <itemref idref="side.xhtml"/>
+    <itemref idref="illustrations.xhtml"/>
+    <itemref idref="copyright.xhtml"/>
+  </spine>
+  <guide>
+    <reference href="Text/cover.xhtml" title="co-op" type="cover"/>
+  </guide>
+</package>
