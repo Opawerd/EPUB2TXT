@@ -24,17 +24,20 @@ public static class EPUBConverter
     {
         string curPath = "";
         //if(!EPUBConverter.FileExist()) return "You should enter proper EPUB file path.";
-        XElement xmlReader = XElement.Load("volume.opf");
+        XElement xmlReader = XElement.Load("/home/tgco7874/book/volume.opf");
         XElement curText;
         xmlReader = xmlReader.Element("{http://www.idpf.org/2007/opf}spine");
         foreach(var names in xmlReader.Elements())
         {
-            curPath = "./Text/" + names.Attribute("idref")?.Value;
-            curText = new XElement(curPath);
+            curPath = "/home/tgco7874/book/Text" + names.Attribute("idref")?.Value;
+            curText = XElement.Load(curPath);
 
             foreach(var lines in curText.Elements())
             {
-                Console.WriteLine(lines.Value);
+                foreach(var line in lines.Elements())
+                {
+                    Console.WriteLine(line.Value);
+                }
             }
         }        
 
