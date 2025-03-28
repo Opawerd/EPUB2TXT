@@ -22,16 +22,23 @@ public static class EPUBConverter
     **/
     public static String Convert()
     {
-        if(!EPUBConverter.FileExist()) return "You should enter proper EPUB file path.";
-        XElement xmlReader = XElement.Load(FileName + "/OEBPS/volume.opf");
+        string curPath = "";
+        //if(!EPUBConverter.FileExist()) return "You should enter proper EPUB file path.";
+        XElement xmlReader = XElement.Load("volume.opf");
+        XElement curText;
         xmlReader = xmlReader.Element("{http://www.idpf.org/2007/opf}spine");
         foreach(var names in xmlReader.Elements())
         {
-            Console.WriteLine(names.Attribute("idref")?.Value);
+            curPath = "./Text/" + names.Attribute("idref")?.Value;
+            curText = new XElement(curPath);
+
+            foreach(var lines in curText.Elements())
+            {
+                Console.WriteLine(lines.Value);
+            }
         }        
 
         // Every text files are in OEBPS/Text folder
-        Console.WriteLine(xmlReader);
         return "Done!";
     }
 }
@@ -40,6 +47,7 @@ class ActuallProgram
 {
     static void Main(string[] args)
     {
-        
+        EPUBConverter.FileName = "";
+        Console.WriteLine(EPUBConverter.Convert());
     }
 }
