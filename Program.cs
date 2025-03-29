@@ -16,11 +16,13 @@ public static class EPUBConverter
     }
     private static void Unzip()
     {   
-        ZipFile.ExtractToDirectory(FileName, "./temp");
+        ZipFile.ExtractToDirectory(FileName, "./temp/" + FileName.Substring(0, (FileName.Length - 5)));
     }
 
     private static void Clear()
     {
+        // Due to the permisson problem, this thing could not delete any files! WTF.
+        // Anyway, I'll left garbage behind, good luck with does things. (or just manually delete unziped files! it's not that hard.)
         File.Delete("./temp");
     }
 
@@ -39,31 +41,36 @@ public static class EPUBConverter
     public static String Convert()
     {
         string curPath = "";
-
+        string title;
+        string body = "";
+        
         if(!EPUBConverter.FileExist()) return "You should enter proper EPUB file path.";
-
+        title = FileName.Substring(0, FileName.Length - 5);
         // Unzip files into some rando place (or in temp folder)
         EPUBConverter.Unzip();
 
-        XElement xmlReader = XElement.Load("/home/tgco7874/book/volume.opf");
+        XElement xmlReader = XElement.Load("./temp/" + title + "/OEBPS/volume.opf");
         XElement curText;
         xmlReader = xmlReader.Element("{http://www.idpf.org/2007/opf}spine");
+
         foreach(var names in xmlReader.Elements())
         {
-            curPath = "/home/tgco7874/book/Text" + names.Attribute("idref")?.Value;
+            curPath = "./temp/" + title + "/OEBPS/Text/" + names.Attribute("idref")?.Value;
             curText = XElement.Load(curPath);
-
-            foreach(var lines in curText.Elements())
+            using(StreamWriter writer = File.CreateText("./completed/"+ "book.txt"))
             {
-                foreach(var line in lines.Elements())
+                foreach(var lines in curText.Elements())
                 {
-                    Console.WriteLine(line.Value);
+                    foreach(var line in lines.Elements())
+                    {
+                        body = body + line.Value + "\n";
+                    }
                 }
+                writer.Write(body);
             }
+            
         }        
 
-        // Remove temporary unziped files
-        EPUBConverter.Clear();
         return "Done!";
     }
 }
@@ -73,8 +80,8 @@ class ActuallProgram
     static void Main(string[] args)
     {
         //Set file name and Saved Path
-        EPUBConverter.FileName = "Book.epub";
-        EPUBConverter.FuncTest();
+        EPUBConverter.FileName = "./books/Book.epub";
+        Console.WriteLine(EPUBConverter.Convert());
         //Console.WriteLine(EPUBConverter.Convert());
     }
 }
