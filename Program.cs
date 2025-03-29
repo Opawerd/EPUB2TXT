@@ -1,7 +1,9 @@
-﻿using System.IO.Enumeration;
+﻿using System.IO.Compression;
+using System.IO.Enumeration;
 using System.Xml;
 using System.Xml.Linq;
 namespace EPUB2TXT;
+
 
 public static class EPUBConverter
 {
@@ -11,6 +13,20 @@ public static class EPUBConverter
     {
         if(FileName?.Substring(FileName.Length - 5) != ".epub") return false;
         return File.Exists(FileName); 
+    }
+    private static void Unzip()
+    {   
+        ZipFile.ExtractToDirectory(FileName, "./temp");
+    }
+
+    private static void Clear()
+    {
+        File.Delete("./temp");
+    }
+
+    public static void FuncTest()
+    {
+        EPUBConverter.Unzip();
     }
     /**
     / 1. Unzip the EPUB File
@@ -23,7 +39,12 @@ public static class EPUBConverter
     public static String Convert()
     {
         string curPath = "";
-        //if(!EPUBConverter.FileExist()) return "You should enter proper EPUB file path.";
+
+        if(!EPUBConverter.FileExist()) return "You should enter proper EPUB file path.";
+
+        // Unzip files into some rando place (or in temp folder)
+        EPUBConverter.Unzip();
+
         XElement xmlReader = XElement.Load("/home/tgco7874/book/volume.opf");
         XElement curText;
         xmlReader = xmlReader.Element("{http://www.idpf.org/2007/opf}spine");
@@ -41,7 +62,8 @@ public static class EPUBConverter
             }
         }        
 
-        // Every text files are in OEBPS/Text folder
+        // Remove temporary unziped files
+        EPUBConverter.Clear();
         return "Done!";
     }
 }
@@ -50,7 +72,9 @@ class ActuallProgram
 {
     static void Main(string[] args)
     {
-        EPUBConverter.FileName = "";
-        Console.WriteLine(EPUBConverter.Convert());
+        //Set file name and Saved Path
+        EPUBConverter.FileName = "Book.epub";
+        EPUBConverter.FuncTest();
+        //Console.WriteLine(EPUBConverter.Convert());
     }
 }
