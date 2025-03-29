@@ -8,7 +8,7 @@ namespace EPUB2TXT;
 public static class EPUBConverter
 {
     public static String? FileName { get; set; }
-    private static String SavedPath { get; set; } = "./"; 
+    private static String SavedPath { get; set; } = "./books/"; 
     private static bool FileExist()
     {
         if(FileName?.Substring(FileName.Length - 5) != ".epub") return false;
@@ -79,9 +79,12 @@ class ActuallProgram
 {
     static void Main(string[] args)
     {
+        String[] bookNames = [];
         //Set file name and Saved Path
-        EPUBConverter.FileName = "./books/Book.epub";
-        Console.WriteLine(EPUBConverter.Convert());
-        //Console.WriteLine(EPUBConverter.Convert());
+        foreach(var titles in bookNames)
+        {
+            EPUBConverter.FileName = titles;
+            EPUBConverter.Convert();
+        }
     }
 }

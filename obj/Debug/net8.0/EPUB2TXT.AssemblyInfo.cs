@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EPUB2TXT")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8efa607af40f112902f573ebc836d21bba77109e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ca5aa9b81d4c6fec5cbc1f2df399e39f23348c2d")]
 [assembly: System.Reflection.AssemblyProductAttribute("EPUB2TXT")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EPUB2TXT")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
