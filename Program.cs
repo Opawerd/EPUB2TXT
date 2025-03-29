@@ -57,19 +57,20 @@ public static class EPUBConverter
         {
             curPath = "./temp/" + title + "/OEBPS/Text/" + names.Attribute("idref")?.Value;
             curText = XElement.Load(curPath);
-            using(StreamWriter writer = File.CreateText("./completed/"+ "book.txt"))
-            {
+            
                 foreach(var lines in curText.Elements())
                 {
                     foreach(var line in lines.Elements())
                     {
                         body = body + line.Value + "\n";
                     }
-                }
-                writer.Write(body);
-            }
-            
-        }        
+                }          
+        }   
+
+        using(StreamWriter writer = File.CreateText("./completed/"+ "book.txt"))
+        {     
+            writer.Write(body);
+        }
 
         return "Done!";
     }
