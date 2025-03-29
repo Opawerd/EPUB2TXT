@@ -1,4 +1,4 @@
-﻿using System.IO.Compression;
+﻿﻿using System.IO.Compression;
 using System.IO.Enumeration;
 using System.Xml;
 using System.Xml.Linq;
@@ -8,27 +8,55 @@ namespace EPUB2TXT;
 public static class EPUBConverter
 {
     public static String? FileName { get; set; }
-    private static String SavedPath { get; set; } = "./books/"; 
+    private static String BookPath { get; set; } = "./books/"; 
+    private static String TempFolder = "./temp/";
+    private static String ConvertedFolder = "./completed/";
+    
+    public static bool InitialCheck()
+    {
+        bool firstCheck = !new DirectoryInfo(TempFolder).Exists;
+        if(firstCheck) new DirectoryInfo(TempFolder).Create();
+
+        firstCheck = !new DirectoryInfo(BookPath).Exists;
+        if(firstCheck) new DirectoryInfo(BookPath).Create();
+
+        firstCheck = !new DirectoryInfo(ConvertedFolder).Exists;
+        if(firstCheck) new DirectoryInfo(ConvertedFolder).Create();
+
+        return firstCheck;
+    }
+
+    public static List<String> GetFileNames()
+    {
+        string[] files = Directory.GetFiles(BookPath);
+        List<String> output = [];
+
+        // 파일명 출력
+        foreach (var file in files)
+        {
+            output.Add(Path.GetFileName(file));
+        }
+        return output;
+    }
     private static bool FileExist()
     {
-        if(FileName?.Substring(FileName.Length - 5) != ".epub") return false;
-        return File.Exists(FileName); 
+        return File.Exists(BookPath + FileName) || FileName?.Substring(FileName.Length - 5) != ".epub"; 
     }
     private static void Unzip()
     {   
-        ZipFile.ExtractToDirectory(FileName, "./temp/" + FileName.Substring(0, (FileName.Length - 5)));
+        ZipFile.ExtractToDirectory(BookPath + FileName, "./temp/" + FileName.Substring(0, (FileName.Length - 5)));
     }
 
-    private static void Clear()
-    {
-        // Due to the permisson problem, this thing could not delete any files! WTF.
-        // Anyway, I'll left garbage behind, good luck with does things. (or just manually delete unziped files! it's not that hard.)
-        File.Delete("./temp");
-    }
+    // private static void Clear()
+    // {
+    //     // Due to the permisson problem, this thing could not delete any files! WTF. I tried most of things! (Probably) StackOverflow lied to me again!
+    //     // Anyway, I'll left this garbage behind, good luck with these thing. (or just manually delete unziped files! it's not that hard.)
+    //     File.Delete("./temp");
+    // }
 
     public static void FuncTest()
     {
-        EPUBConverter.Unzip();
+        EPUBConverter.InitialCheck();
     }
     /**
     / 1. Unzip the EPUB File
@@ -44,18 +72,18 @@ public static class EPUBConverter
         string title;
         string body = "";
         
-        if(!EPUBConverter.FileExist()) return "You should enter proper EPUB file path.";
+        if(!EPUBConverter.FileExist()) return FileName;
         title = FileName.Substring(0, FileName.Length - 5);
         // Unzip files into some rando place (or in temp folder)
         EPUBConverter.Unzip();
 
-        XElement xmlReader = XElement.Load("./temp/" + title + "/OEBPS/volume.opf");
+        XElement xmlReader = XElement.Load(TempFolder + title + "/OEBPS/volume.opf");
         XElement curText;
         xmlReader = xmlReader.Element("{http://www.idpf.org/2007/opf}spine");
 
         foreach(var names in xmlReader.Elements())
         {
-            curPath = "./temp/" + title + "/OEBPS/Text/" + names.Attribute("idref")?.Value;
+            curPath = TempFolder + title + "/OEBPS/Text/" + names.Attribute("idref")?.Value;
             curText = XElement.Load(curPath);
             
                 foreach(var lines in curText.Elements())
@@ -67,7 +95,7 @@ public static class EPUBConverter
                 }          
         }   
 
-        using(StreamWriter writer = File.CreateText("./completed/"+ "book.txt"))
+        using(StreamWriter writer = File.CreateText(ConvertedFolder + title + ".txt"))
         {     
             writer.Write(body);
         }
@@ -80,12 +108,22 @@ class ActuallProgram
 {
     static void Main(string[] args)
     {
-        String[] bookNames = [];
-        //Set file name and Saved Path
-        foreach(var titles in bookNames)
+        if(EPUBConverter.InitialCheck())
         {
-            EPUBConverter.FileName = titles;
-            EPUBConverter.Convert();
+            Console.WriteLine("Please rerun the program after place .epub files into 'books' folder!");
         }
+        else
+        {
+            // Should create some sort of function that read everything inside BookPath, instead of manualy enter file name into array.
+            List<String> bookNames = EPUBConverter.GetFileNames();
+            //Set file name and Saved Path
+            foreach(var titles in bookNames)
+            {
+                EPUBConverter.FileName = titles;
+                Console.WriteLine(EPUBConverter.Convert());
+            }
+        }
+        
+
     }
 }
